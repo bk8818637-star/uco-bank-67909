@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indian Express Bank</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white shadow-sm p-4">
+    <div class="flex justify-between items-center max-w-4xl mx-auto">
+      <div class="flex items-center space-x-2">
+        <div class="bg-blue-600 text-white p-2 rounded-lg">
+          <i data-lucide="home" class="h-5 w-5"></i>
+        </div>
+        <h1 class="text-xl font-bold text-blue-600">Indian Express Bank</h1>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button class="p-2 rounded-full hover:bg-gray-100">
+          <i data-lucide="bell" class="h-5 w-5"></i>
+        </button>
+        <button class="p-2 rounded-full hover:bg-gray-100">
+          <i data-lucide="settings" class="h-5 w-5"></i>
+        </button>
+        <div class="relative w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+          <i data-lucide="user" class="h-5 w-5 text-blue-600"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-4 space-y-6">
+    <!-- Account Balance Card -->
+    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg shadow">
+      <div class="p-6">
+        <p class="text-blue-100 text-sm">Available Balance</p>
+        <h2 class="text-3xl font-bold mt-1">₹12,500.75</h2>
+      </div>
+      <div class="p-6 pt-0 flex justify-between">
+        <div>
+          <p class="text-blue-100 text-sm">Account Number</p>
+          <p class="font-medium">XXXX-XXXX-7890</p>
+        </div>
+        <div>
+          <p class="text-blue-100 text-sm">IFSC Code</p>
+          <p class="font-medium">INEX0123456</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="grid grid-cols-4 gap-2">
+      <button class="border rounded-lg flex flex-col items-center h-20 justify-center hover:bg-gray-50">
+        <div class="bg-blue-100 p-2 rounded-full mb-1">
+          <i data-lucide="arrow-right" class="h-5 w-5 text-blue-600"></i>
+        </div>
+        <span class="text-xs">Transfer</span>
+      </button>
+      <button class="border rounded-lg flex flex-col items-center h-20 justify-center hover:bg-gray-50">
+        <div class="bg-blue-100 p-2 rounded-full mb-1">
+          <i data-lucide="arrow-right" class="h-5 w-5 text-blue-600"></i>
+        </div>
+        <span class="text-xs">Pay Bills</span>
+      </button>
+      <button class="border rounded-lg flex flex-col items-center h-20 justify-center hover:bg-gray-50">
+        <div class="bg-blue-100 p-2 rounded-full mb-1">
+          <i data-lucide="arrow-right" class="h-5 w-5 text-blue-600"></i>
+        </div>
+        <span class="text-xs">Deposit</span>
+      </button>
+      <button class="border rounded-lg flex flex-col items-center h-20 justify-center hover:bg-gray-50">
+        <div class="bg-blue-100 p-2 rounded-full mb-1">
+          <i data-lucide="arrow-right" class="h-5 w-5 text-blue-600"></i>
+        </div>
+        <span class="text-xs">More</span>
+      </button>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="bg-white rounded-lg shadow">
+      <div class="p-6">
+        <h2 class="text-lg font-bold">Recent Transactions</h2>
+      </div>
+      <div class="px-6 pb-6 space-y-4">
+        <!-- Transaction 1 -->
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <div class="p-3 rounded-full bg-green-100">
+              <i data-lucide="arrow-right" class="h-5 w-5 text-green-600 rotate-180"></i>
+            </div>
+            <div>
+              <p class="font-medium">Salary Deposit</p>
+              <p class="text-sm text-gray-500">1 Jun</p>
+            </div>
+          </div>
+          <p class="font-medium text-green-600">+₹25,000</p>
+        </div>
+        
+        <!-- Transaction 2 -->
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <div class="p-3 rounded-full bg-red-100">
+              <i data-lucide="arrow-right" class="h-5 w-5 text-red-600"></i>
+            </div>
+            <div>
+              <p class="font-medium">Electricity Bill</p>
+              <p class="text-sm text-gray-500">3 Jun</p>
+            </div>
+          </div>
+          <p class="font-medium text-red-600">-₹1,250</p>
+        </div>
+        
+        <!-- Transaction 3 -->
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <div class="p-3 rounded-full bg-red-100">
+              <i data-lucide="arrow-right" class="h-5 w-5 text-red-600"></i>
+            </div>
+            <div>
+              <p class="font-medium">Grocery Store</p>
+              <p class="text-sm text-gray-500">5 Jun</p>
+            </div>
+          </div>
+          <p class="font-medium text-red-600">-₹3,250</p>
+        </div>
+        
+        <!-- Transaction 4 -->
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <div class="p-3 rounded-full bg-green-100">
+              <i data-lucide="arrow-right" class="h-5 w-5 text-green-600 rotate-180"></i>
+            </div>
+            <div>
+              <p class="font-medium">Freelance Payment</p>
+              <p class="text-sm text-gray-500">8 Jun</p>
+            </div>
+          </div>
+          <p class="font-medium text-green-600">+₹8,000</p>
+        </div>
+        
+        <button class="w-full py-2 text-blue-600 font-medium hover:bg-gray-50 rounded-lg">
+          View All Transactions
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

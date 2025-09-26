@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UPI Payment Scanner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 p-4">
+  <div class="max-w-md mx-auto">
+    <div class="bg-white rounded-lg shadow-sm w-full">
+      <div class="p-6 border-b">
+        <h2 class="text-2xl font-bold">UPI Payment Scanner</h2>
+        <p class="text-gray-500">Scan a UPI QR code to make payments</p>
+      </div>
+      <div class="p-6 space-y-4">
+        <!-- Scanner View (initial state) -->
+        <div id="scanner-view">
+          <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64 flex items-center justify-center">
+            <div class="text-center">
+              <div class="text-gray-500 mb-4">Camera feed will appear here</div>
+              <button 
+                id="scan-btn"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md"
+                onclick="simulateScan()"
+              >
+                Scan QR Code
+              </button>
+            </div>
+          </div>
+          <div class="text-sm text-gray-500 mt-2">
+            <p>Point your camera at a UPI QR code to scan it.</p>
+            <p>Alternatively, you can upload an image of the QR code.</p>
+          </div>
+        </div>
+
+        <!-- Payment Details View (hidden initially) -->
+        <div id="payment-view" class="hidden">
+          <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+            <h3 class="font-medium text-green-800">Payment Details Found</h3>
+          </div>
+          
+          <div class="space-y-2">
+            <div>
+              <p class="text-sm text-gray-500">Merchant Name</p>
+              <p class="font-medium" id="merchant-name">Example Merchant</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">UPI ID</p>
+              <p class="font-medium" id="upi-id">merchant@upi</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Amount</p>
+              <p class="font-medium" id="amount">₹100.50</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Note</p>
+              <p class="font-medium" id="transaction-note">Payment for services</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+            <p class="text-sm truncate" id="raw-link">upi://pay?pa=merchant@upi&pn=Example%20Merchant&am=100.50&tn=Payment%20for%20services</p>
+            <button 
+              id="copy-btn"
+              class="p-2 rounded-md hover:bg-gray-100 ml-2"
+              onclick="copyToClipboard()"
+            >
+              <i data-lucide="copy" class="h-4 w-4"></i>
+            </button>
+          </div>
+          
+          <div class="flex space-x-2">
+            <button 
+              class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-md flex-1"
+              onclick="resetScanner()"
+            >
+              Scan Another
+            </button>
+            <button 
+              class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md flex-1"
+            >
+              Pay Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    function simulateScan() {
+      const scannerView = document.getElementById('scanner-view');
+      const paymentView = document.getElementById('payment-view');
+      
+      // Show scanning state
+      scannerView.innerHTML = `
+        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64 flex items-center justify-center">
+          <div class="text-center">
+            <div class="animate-pulse text-lg font-medium">Scanning QR code...</div>
+          </div>
+        </div>
+      `;
+      
+      // Simulate scanning delay
+      setTimeout(() => {
+        scannerView.style.display = 'none';
+        paymentView.style.display = 'block';
+      }, 1500);
+    }
+
+    function copyToClipboard() {
+      const rawLink = document.getElementById('raw-link').textContent;
+      navigator.clipboard.writeText(rawLink);
+      
+      const copyBtn = document.getElementById('copy-btn');
+      copyBtn.innerHTML = '<i data-lucide="check" class="h-4 w-4 text-green-600"></i>';
+      lucide.createIcons();
+      
+      setTimeout(() => {
+        copyBtn.innerHTML = '<i data-lucide="copy" class="h-4 w-4"></i>';
+        lucide.createIcons();
+      }, 2000);
+    }
+
+    function resetScanner() {
+      document.getElementById('scanner-view').style.display = 'block';
+      document.getElementById('scanner-view').innerHTML = `
+        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64 flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-gray-500 mb-4">Camera feed will appear here</div>
+            <button 
+              id="scan-btn"
+              class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md"
+              onclick="simulateScan()"
+            >
+              Scan QR Code
+            </button>
+          </div>
+        </div>
+        <div class="text-sm text-gray-500 mt-2">
+          <p>Point your camera at a UPI QR code to scan it.</p>
+          <p>Alternatively, you can upload an image of the QR code.</p>
+        </div>
+      `;
+      document.getElementById('payment-view').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
