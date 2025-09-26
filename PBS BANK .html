@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prashant super fast Bank</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50">
+  <!-- Login Screen -->
+  <div id="login-screen" class="min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+      <div class="space-y-1 text-center mb-6">
+        <h1 class="text-2xl font-bold text-blue-800">Prashant super fast  Bank</h1>
+        <p class="text-gray-500">Login to your account</p>
+      </div>
+      <form class="space-y-4">
+        <div class="space-y-2">
+          <label for="username" class="block text-sm font-medium text-gray-700">Customer ID</label>
+          <input 
+            type="text" 
+            id="username" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+            placeholder="Enter your customer ID"
+            required
+          >
+        </div>
+        <div class="space-y-2">
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+            placeholder="Enter your password"
+            required
+          >
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard (hidden by default) -->
+  <div id="dashboard" class="hidden min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex justify-between items-center mb-8">
+        <h1 class="text-2xl font-bold text-blue-800">Prashant super fast Bank</h1>
+        <button class="text-blue-600 hover:text-blue-800">Logout</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Account Summary -->
+        <div class="md:col-span-2 bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <i data-lucide="user" class="w-5 h-5"></i>
+            <h2 class="text-xl font-bold">Account Summary</h2>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="bg-blue-50 p-4 rounded-lg">
+              <p class="text-sm text-gray-500">Available Balance</p>
+              <p class="text-3xl font-bold">$25,4320000000000000000000000.50</p>
+            </div>
+
+            <div>
+              <h3 class="font-medium mb-3">Recent Transactions</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center border-b pb-2">
+                  <div>
+                    <p class="font-medium">Salary Credit</p>
+                    <p class="text-sm text-gray-500">2025-05-15</p>
+                  </div>
+                  <p class="text-green-600">$25,00,00,00,00,00,00,00,000,0.00</p>
+                </div>
+                <div class="flex justify-between items-center border-b pb-2">
+                  <div>
+                    <p class="font-medium">ATM Withdrawal</p>
+                    <p class="text-sm text-gray-500">2025-05-10</p>
+                  </div>
+                  <p class="text-red-600">-50,000.00</p>
+                </div>
+                <div class="flex justify-between items-center border-b pb-2">
+                  <div>
+                    <p class="font-medium">Grocery Store</p>
+                    <p class="text-sm text-gray-500">2025-05-10</p>
+                  </div>
+                  <p class="text-red-600">-1,567.50</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Debit Card Section -->
+        <div class="space-y-6">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="flex items-center gap-2 mb-4">
+              <i data-lucide="shield" class="w-5 h-5"></i>
+              <h2 class="text-xl font-bold">Debit Card</h2>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-700 to-blue-900 text-white p-4 rounded-lg shadow-lg">
+              <div class="flex justify-between items-start mb-2">
+                <div>
+                  <p class="text-xs opacity-80">Card Number</p>
+                  <p class="text-lg tracking-wider">7988 3435 0666 4567</p>
+                </div>
+                <i data-lucide="QR Code" class="w-5 h-5 opacity-70"> </i>
+              </div>
+              <div class="flex justify-between mt-8">
+                <div>
+                  <p class="text-xs opacity-80">Card Holder</p>
+                  <p class="text-sm">PRASHANT KUMAR</p>
+                </div>
+                <div>
+                  <p class="text-xs opacity-80">Expires</p>
+                  <p class="text-sm">12/45</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-4 text-center">
+              <button class="border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50">
+                Request New Card
+              </button>
+            </div>
+          </div>
+
+          <!-- Card Request Form (hidden by default) -->
+          <div id="card-request-form" class="hidden bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-bold mb-2">Request New Card</h2>
+            <p class="text-gray-500 mb-4">Fill this form to request a replacement debit card</p>
+            
+            <form class="space-y-4">
+              <div class="space-y-2">
+                <label for="reason" class="block text-sm font-medium text-gray-700">Reason for replacement</label>
+                <input 
+                  type="text" 
+                  id="reason" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+                  placeholder="Lost/Stolen/Damaged"
+                  required
+                >
+              </div>
+              <div class="space-y-2">
+                <label for="delivery" class="block text-sm font-medium text-gray-700">Delivery Address</label>
+                <input 
+                  type="text" 
+                  id="delivery" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" 
+                  placeholder="Enter delivery address"
+                  value="Registered address"
+                  required
+                >
+              </div>
+              <div class="flex gap-2">
+                <button type="submit" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                  Submit Request
+                </button>
+                <button type="button" class="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50">
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Card Request Submitted (hidden by default) -->
+          <div id="card-request-submitted" class="hidden bg-white rounded-lg shadow-md p-6 text-center">
+            <div class="flex items-center justify-center gap-2 text-green-600">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              <span>Card request submitted</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Simple demo functionality
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('login-screen').classList.add('hidden');
+      document.getElementById('dashboard').classList.remove('hidden');
+    });
+    
+    document.querySelector('#dashboard button').addEventListener('click', function() {
+      document.getElementById('dashboard').classList.add('hidden');
+      document.getElementById('login-screen').classList.remove('hidden');
+    });
+    
+    document.querySelector('.bg-white button').addEventListener('click', function() {
+      document.getElementById('card-request-form').classList.remove('hidden');
+    });
+    
+    document.querySelector('#card-request-form button[type="button"]').addEventListener('click', function() {
+      document.getElementById('card-request-form').classList.add('hidden');
+    });
+    
+    document.querySelector('#card-request-form form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('card-request-form').classList.add('hidden');
+      document.getElementById('card-request-submitted').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
